@@ -1,0 +1,21 @@
+version: "3"
+
+networks:
+  plt13:
+    driver: bridge
+        
+services:
+  laravel_passport:
+    build: ./laravel_passport
+    networks:
+      plt13:
+    ports:
+      - "3004:3004"
+      - "3005:3005"
+    stdin_open: true
+    tty: true
+    volumes:
+      - /home/$USER/.ssh:/root/.ssh
+      - /home/$USER/projetos-terceiros/laravel_passport:/home/app
+    restart: always
+    container_name: laravel_passport
